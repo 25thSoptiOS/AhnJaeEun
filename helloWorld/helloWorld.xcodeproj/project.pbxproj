@@ -15,6 +15,7 @@
 		F4248E11233F3634006F6E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4248E0F233F3634006F6E62 /* LaunchScreen.storyboard */; };
 		F4248E1F233F3FB9006F6E62 /* prac2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4248E1E233F3FB9006F6E62 /* prac2VC.swift */; };
 		F4248E21233F434E006F6E62 /* prac2secondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4248E20233F434E006F6E62 /* prac2secondVC.swift */; };
+		F4248E23233F4F79006F6E62 /* autoPrac.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4248E22233F4F79006F6E62 /* autoPrac.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F4248E12233F3634006F6E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4248E1E233F3FB9006F6E62 /* prac2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prac2VC.swift; sourceTree = "<group>"; };
 		F4248E20233F434E006F6E62 /* prac2secondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prac2secondVC.swift; sourceTree = "<group>"; };
+		F4248E22233F4F79006F6E62 /* autoPrac.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = autoPrac.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				F4248E0D233F3634006F6E62 /* Assets.xcassets */,
 				F4248E0A233F3633006F6E62 /* Main.storyboard */,
 				F4248E0F233F3634006F6E62 /* LaunchScreen.storyboard */,
+				F4248E22233F4F79006F6E62 /* autoPrac.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4248E11233F3634006F6E62 /* LaunchScreen.storyboard in Resources */,
+				F4248E23233F4F79006F6E62 /* autoPrac.storyboard in Resources */,
 				F4248E0E233F3634006F6E62 /* Assets.xcassets in Resources */,
 				F4248E0C233F3633006F6E62 /* Main.storyboard in Resources */,
 			);
