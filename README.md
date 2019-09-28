@@ -32,4 +32,3 @@
 * Practice 4) Autolayout with uiviews
 
   <img width="377" alt="스크린샷 2019-09-29 오전 1 12 43" src="https://user-images.githubusercontent.com/49272528/65819640-d7ae4580-e259-11e9-89f7-fee9a1caf459.png">
->>>>>>> 4a176d6690f7c417eaa557522515413387665de4
