@@ -9,151 +9,110 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var calculateLabel: UILabel!
-    @IBOutlet weak var clearBtn: UIButton!
     
-    var buttonClicked = false
+    @IBOutlet weak var calculatedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        calculatedLabel.text = "0"
     }
     
-    @IBAction func calculateButton(sender: UIButton) {
+    // 변수 정의
+    // 01. 라벨에 출력될 값을 결정할 displayText, 최초 nil
+    var displayText: String? = nil
+    
+    // 02. 연산 기호를 저장해둘 operatorSign, 최초 nil
+    var operatorSign: String? = nil
+    
+    // 03. 연산을 기다리는 값과 현재 인풋된 값을 구분하는 변수
+    //var firstNum: Int = 0
+    var firstNum = 0
+    //var secondNum: Int = 0
+    var secondNum = 0
+    var divNum : Float = 0
+    
+    // number button function
+    // 입력된 수가 있느냐 없느냐에 따라 조건 처리해주기
+    @IBAction func numBtn(numBtn: UIButton) {
         
-        let button = sender.titleLabel?.text
-        var value : String
-        // number button clicked
-        value = calculateLabel.text!
+        if displayText == nil {
+            displayText = (numBtn.titleLabel?.text)!
+        } else {
+            displayText? += (numBtn.titleLabel?.text)!
+        }
+        
+        calculatedLabel.text = displayText
+    }
+    
+    
+    // clear button function
+    // if number clicked : AC -> C
+    // if noting in calculatedLabel : C -> AC
+    @IBAction func clearBtn(resetBtn: UIButton) {
+        calculatedLabel.text = "0"
+        displayText = nil
+        firstNum = 0
+        secondNum = 0
+        divNum = 0
+        operatorSign = nil
+    }
 
-        if buttonClicked {
+    @IBAction func operation(signBtn: UIButton) {
+        if displayText != nil {
+            print("test: 연산자 제대로 클릭됨")
+            Operation()
+            operatorSign = signBtn.titleLabel!.text!
+            displayText = nil
             
-            if (value == "0"){
-            
-                calculateLabel.text = button!
-            
+            if operatorSign == "÷" {
+                if signBtn.titleLabel?.text == "=" {
+                    calculatedLabel.text = String(divNum)
+                }
+                print("uhoh")
             } else {
-            
-                calculateLabel.text = calculateLabel.text! + button!
-            
-            }
-            
-            // 버튼 클릭에 따른 clear button 변화주기
-            if(calculateLabel.text == "0") {
-                clearBtn.titleLabel?.text = "AC"
-            } else {
-                clearBtn.titleLabel?.text = "C"
+           // if signBtn.titleLabel!.text! == "=" {
+                // 나눗셈인 경우
+                print("ohmygosh")
+                calculatedLabel.text = String(firstNum)
+            //}
             }
             
         } else {
-            
-            // 버튼 클릭에 따른 clear button 변화주기
-            if(calculateLabel.text == "0") {
-                clearBtn.titleLabel?.text = "AC"
-            } else {
-                clearBtn.titleLabel?.text = "C"
+            operatorSign = signBtn.titleLabel!.text!
+            print("test: 입력된 수 없을 때도 연산자 제대로 클릭됨")
+        }
+    }
+
+    func Operation() {
+        if operatorSign == nil {
+            firstNum = Int(displayText!)!
+        }else {
+            secondNum = Int(displayText!)!
+            if operatorSign == "+" {
+                firstNum += secondNum
+            }else if operatorSign == "−" {
+                firstNum -= secondNum
+            }else if operatorSign == "×" {
+                firstNum *= secondNum
+            }else if operatorSign == "÷" {
+                
+                //나눗셈의 경우 소숫점 처리해주기
+                var test: Float = 0
+                var test2:Float = 0
+                test = Float(firstNum)
+                test2 = Float(secondNum)
+                
+                test /= test2
+                
+                divNum = test
+                
+                print(divNum)
+                
+                firstNum /= secondNum
+                
             }
-            
-            calculateLabel.text = button!
-            buttonClicked = true
-        
+            calculatedLabel.text = String(firstNum)
         }
-        
-// 노가다 test code
-//        for index in 0..<10 {
-//            if (button == String(index)) {
-//                if (value == "0") {
-//                    calculateLabel.text = String(index)
-//                    clearBtn.titleLabel?.text = "C"
-//                } else {
-//                    clearBtn.titleLabel?.text = "C"
-//                    calculateLabel.text = calculate! + String(index)
-//                }
-//
-//            }
-//            test = 13/2
-//            print("test cal : " + String(test))
-//            if (button == "+") {
-//
-//            }
-//            //value = calculateLabel.text!
-//        }
-        
-        value = calculateLabel.text!
-        
-        // print(calculateLabel.text)
-        // print(value)
-        
-        
-        if(button == "AC") {
-            calculateLabel.text = "0"
-            value = calculateLabel.text!
-            
-// --> 노가다 test code
-            //print(button!)
-//            if (value != "0") {
-//                //calculateLabel.text = String(value[value.startIndex ..< value.index(value.endIndex, offsetBy: -1)])
-//                calculateLabel.text = "0"
-//                value = calculateLabel.text!
-//                // print("C is acting")
-//            } else if (value == "0"){
-//                calculateLabel.text = "0"
-//                value = calculateLabel.text!
-//                // print("AC clicked")
-//            }
-            //print(button!)
-            //print(value)
-        }
-        
-        if(button == "+"){
-
-// 노가다 테스트 코드
-//            temp = value
-//
-//            print("value: " + temp)
-//            print("calculate: " + calculate!)
-//
-//            value = "0"
-//
-//            print("value: " + value)
-//            print("temp: " + temp)
-//            print("calculate: " + calculate!)
-//            //value = ""
-//            calculateLabel.text = temp
-//            for index in 0..<10 {
-//                if (button == String(index)) {
-//                    print("In value: " + value)
-//                    if (value == "0") {
-//                        //calculateLabel.text = ""
-//                        calculateLabel.text = String(index)
-//                    } else {
-//                        //calculateLabel.text = ""
-//                        calculateLabel.text = calculate! + String(index)
-//                    }
-//                }
-//                //value = calculateLabel.text!
-//            }
-            //output = output + Int(value)!
-            //print(output)
-            
-        }
-        
-        if(button == "−"){
-            
-        }
-        
-        if(button == "×"){
-            
-        }
-        
-        if(button == "÷"){
-            
-        }
-        
-        if(button == "="){
-
-        }
-        
     }
 
 }
