@@ -64,17 +64,9 @@ class ViewController: UIViewController {
             operatorSign = signBtn.titleLabel!.text!
             displayText = nil
             
-            if operatorSign == "÷" {
-                if signBtn.titleLabel?.text == "=" {
-                    calculatedLabel.text = String(divNum)
-                }
-                print("uhoh")
-            } else {
-           // if signBtn.titleLabel!.text! == "=" {
-                // 나눗셈인 경우
-                print("ohmygosh")
+            if signBtn.titleLabel!.text! == "=" {
+                // 나눗셈일 경우 소수점 출력되도록
                 calculatedLabel.text = String(firstNum)
-            //}
             }
             
         } else {
@@ -96,18 +88,18 @@ class ViewController: UIViewController {
                 firstNum *= secondNum
             }else if operatorSign == "÷" {
                 
-                //나눗셈의 경우 소숫점 처리해주기
+                //나눗셈의 경우 소숫점 처리해주기 테스트코드
+                /*
                 var test: Float = 0
                 var test2:Float = 0
                 test = Float(firstNum)
                 test2 = Float(secondNum)
-                
                 test /= test2
-                
                 divNum = test
-                
                 print(divNum)
+                */
                 
+                // 일반 정수 계산해주기 (소수점 처리 x)
                 firstNum /= secondNum
                 
             }
